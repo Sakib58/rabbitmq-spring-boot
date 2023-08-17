@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "2dfbae23-3747-4baa-8b1a-41b9d04a0df7",
+		"name": "RabbitMQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13827370"
+	},
+	"item": [
+		{
+			"name": "Adding Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"a\",\r\n    \"dept\":\"aa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adding Instructor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"x\",\r\n    \"dept\":\"xx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/instructor/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"instructor",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"studentId\":1,\r\n    \"instructorId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/subscribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Un-subscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":6,\r\n    \"studentId\":3,\r\n    \"instructorId\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/un-subscribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"un-subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Topic Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"instructorId\":1,\r\n    \"noticeType\":\"Notice Type 1\",\r\n    \"noticeTitle\":\"Notice Title 1\",\r\n    \"noticeBody\": \"Notice Body 1: Topic Exchange is checking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/instructor/notices-to-subscribers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"instructor",
+						"notices-to-subscribers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fanout Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"instructorId\":1,\r\n    \"noticeType\":\"Notice Type 1\",\r\n    \"noticeTitle\":\"Notice Title 1\",\r\n    \"noticeBody\": \"Notice Body 1: Fanout Exchange is checking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/instructor/notices-to-all-students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"instructor",
+						"notices-to-all-students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Direct Exchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"instructorId\":1,\r\n    \"noticeType\":\"Notice Type 1\",\r\n    \"noticeTitle\":\"Notice Title 1\",\r\n    \"noticeBody\": \"Notice Body 1: Direct Exchange is checking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/instructor/notices-to-particular-student/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"instructor",
+						"notices-to-particular-student",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Receive Single Message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9292/student/receive-notice/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"receive-notice",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Receive All Messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9292/student/receive-all-notices/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"receive-all-notices",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Message Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9292/student/get-message-count/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"get-message-count",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Student Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"d\",\r\n    \"dept\":\"dd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Student Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"b\",\r\n    \"dept\":\"bb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Header Exchange",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-token",
+						"value": "1234",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass-code",
+						"value": "4321",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\":\"b\",\r\n    \"dept\":\"bb\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/student/create-secure-channel?user-token=1234&pass-code=4321",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"student",
+						"create-secure-channel"
+					],
+					"query": [
+						{
+							"key": "user-token",
+							"value": "1234"
+						},
+						{
+							"key": "pass-code",
+							"value": "4321"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Secure Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"instructorId\":1,\r\n    \"noticeType\":\"Notice Type 1\",\r\n    \"noticeTitle\":\"Notice Title 1\",\r\n    \"noticeBody\": \"Notice Body 1: Fanout Exchange is checking\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9292/instructor/send-message-to-secure-channel?user-token=1234&pass-code=4321",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"instructor",
+						"send-message-to-secure-channel"
+					],
+					"query": [
+						{
+							"key": "user-token",
+							"value": "1234"
+						},
+						{
+							"key": "pass-code",
+							"value": "4321"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
